@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  @apply text-sm;
+  @apply bg-white;
+  @apply dark:bg-black;
+}
+
+@theme {
+  --color-background: oklch(98% 0 0);
+  --color-foreground: oklch(9% 0.084 222.2);
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(9% 0.084 222.2);
+  --color-popover: oklch(100% 0 0);
+  --color-popover-foreground: oklch(9% 0.084 222.2);
+  --color-primary: oklch(53.3% 0.232 221.2);
+  --color-primary-foreground: oklch(98% 0.040 210);
+  --color-secondary: oklch(96.1% 0.040 210);
+  --color-secondary-foreground: oklch(11.2% 0.474 222.2);
+  --color-muted: oklch(96.1% 0.040 210);
+  --color-muted-foreground: oklch(46.9% 0.163 215.4);
+  --color-accent: oklch(96.1% 0.040 210);
+  --color-accent-foreground: oklch(11.2% 0.474 222.2);
+  --color-destructive: oklch(60.2% 0.242 0);
+  --color-destructive-foreground: oklch(98% 0.040 210);
+  --color-border: oklch(91.4% 0.318 214.3);
+  --color-input: oklch(88% 0.318 214.3);
+  --color-ring: oklch(53.3% 0.232 221.2);
+  --radius: 0.5rem;
+  --color-sidebar-background: oklch(98% 0 0);
+  --color-sidebar-foreground: oklch(26.1% 0.053 240);
+  --color-sidebar-primary: oklch(10% 0.059 240);
+  --color-sidebar-primary-foreground: oklch(98% 0 0);
+  --color-sidebar-accent: oklch(95.9% 0.048 240);
+  --color-sidebar-accent-foreground: oklch(10% 0.059 240);
+  --color-sidebar-border: oklch(91% 0.13 220);
+  --color-sidebar-ring: oklch(59.8% 0.212 217.2);
+}
+
+@theme dark {
+  --color-background: oklch(3.9% 0.084 222.2);
+  --color-foreground: oklch(98% 0.040 210);
+  --color-card: oklch(4.9% 0.084 222.2);
+  --color-card-foreground: oklch(98% 0.040 210);
+  --color-popover: oklch(4.9% 0.084 222.2);
+  --color-popover-foreground: oklch(98% 0.040 210);
+  --color-primary: oklch(59.8% 0.212 217.2);
+  --color-primary-foreground: oklch(11.2% 0.474 222.2);
+  --color-secondary: oklch(17.5% 0.326 217.2);
+  --color-secondary-foreground: oklch(98% 0.040 210);
+  --color-muted: oklch(17.5% 0.326 217.2);
+  --color-muted-foreground: oklch(65.1% 0.202 215);
+  --color-accent: oklch(17.5% 0.326 217.2);
+  --color-accent-foreground: oklch(98% 0.040 210);
+  --color-destructive: oklch(30.6% 0.628 0);
+  --color-destructive-foreground: oklch(98% 0.040 210);
+  --color-border: oklch(17.5% 0.326 217.2);
+  --color-input: oklch(15.5% 0.326 217.2);
+  --color-ring: oklch(48% 0.763 224.3);
+  --color-sidebar-background: oklch(10% 0.059 240);
+  --color-sidebar-foreground: oklch(95.9% 0.048 240);
+  --color-sidebar-primary: oklch(48% 0.763 224.3);
+  --color-sidebar-primary-foreground: oklch(100% 0 0);
+  --color-sidebar-accent: oklch(15.9% 0.037 240);
+  --color-sidebar-accent-foreground: oklch(95.9% 0.048 240);
+  --color-sidebar-border: oklch(15.9% 0.037 240);
+  --color-sidebar-ring: oklch(59.8% 0.212 217.2);
+}
+
+.dashboard-container {
+  @apply pt-8 pb-5 px-8;
+}
+
+.mapboxgl-popup-content {
+  @apply !bg-primary-700;
+  @apply !rounded-lg;
+  @apply !py-2;
+  @apply !px-3;
+}
+
+.mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
+  @apply !border-b-primary-700;
+}
+
+.mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip {
+  @apply !border-t-primary-700;
+}
+
+.mapboxgl-popup-anchor-left .mapboxgl-popup-tip {
+  @apply !border-r-primary-700;
+}
+
+.mapboxgl-popup-anchor-right .mapboxgl-popup-tip {
+  @apply !border-l-primary-700;
+}
+
+.marker-popup {
+  @apply bg-primary-700;
+  @apply text-white;
+  @apply p-0;
+  @apply m-0;
+  @apply !flex;
+  @apply justify-between;
+  @apply items-center;
+  @apply gap-3;
+}
+
+.marker-popup-image {
+  @apply w-10 h-10 object-cover bg-white rounded-lg;
+}
+
+.marker-popup-price {
+  @apply text-sm font-semibold text-primary-200;
+}
+
+.marker-popup-title {
+  @apply hover:underline hover:text-blue-300 cursor-pointer;
+  @apply focus:outline-none;
+}
+
+.marker-popup-price-unit {
+  @apply text-xs text-primary-500 font-normal;
+}
+
+/* scrollbar styling */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-200;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary-300;
+}
+
+/* Amplify UI Overrides */
+[data-amplify-authenticator] {
+  --amplify-components-button-primary-background-color: var(--color-primary);
+  --amplify-components-button-primary-hover-background-color: oklch(from var(--color-primary) l c h / 0.9);
+  --amplify-components-button-border-radius: var(--radius);
+  --amplify-components-fieldcontrol-border-radius: var(--radius);
+}
+
+[data-amplify-authenticator][data-variation="default"] {
+  height: 100%;
+  padding: 2rem !important;
+}
+
+[data-amplify-authenticator] [data-amplify-router] {
+  border: none !important;
+  box-shadow: none !important;
+  max-width: 400px !important;
+  margin: 0 auto;
+}
+
+[data-amplify-authenticator] [data-amplify-container] {
+  border-radius: var(--radius);
+  padding: 2rem !important;
+  border: 1px solid var(--color-border);
+}
+
+[data-amplify-authenticator] [data-amplify-form] {
+  padding: 0 !important;
+}
+
+[data-amplify-authenticator] .amplify-tabs__list {
+  display: none;
+}
+
+[data-amplify-authenticator] .amplify-button--primary {
+  width: 100%;
+  height: 2.75rem;
+  margin-top: 1rem;
+  background-color: var(--color-primary) !important;
+  color: var(--color-primary-foreground) !important;
+  @apply font-medium;
+  @apply text-sm;
+}
+
+[data-amplify-authenticator] .amplify-button--primary:hover {
+  background-color: oklch(from var(--color-primary) l c h / 0.8) !important;
+}
+
+[data-amplify-authenticator] .amplify-field-group__control {
+  border-color: var(--color-input);
+}
+
+[data-amplify-authenticator] .amplify-field-group__control:focus-within {
+  border-color: var(--color-ring) !important;
+  box-shadow: 0 0 0 1px var(--color-ring) !important;
+}
+
+[data-amplify-authenticator] .amplify-field__show-password {
+  color: var(--color-muted-foreground);
+}
+
+[data-amplify-authenticator] .amplify-label {
+  @apply text-sm font-medium;
+  color: var(--color-foreground);
+}
+
+[data-amplify-authenticator] .amplify-select {
+  border-color: var(--color-input);
+  border-radius: var(--radius);
+  height: 2.5rem;
+  @apply text-sm;
+}
+
+[data-amplify-authenticator] .amplify-text--error {
+  color: #ff0000;
+}
+
+/* Sonner Toast Styles */
+[data-close-button="true"] {
+  @apply bg-background border-border text-foreground hover:bg-muted;
+}
