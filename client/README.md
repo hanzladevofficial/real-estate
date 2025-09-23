@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏡 RENTiful
 
-## Getting Started
+A modern real-estate rental platform built with **Next.js**, **Mapbox**, and a powerful backend using **PostgreSQL + Prisma + AWS**.  
+This project demonstrates a full-stack architecture with advanced UI components, geospatial data, and scalable backend services.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 🌍 **Interactive Maps** with Mapbox (property locations, geospatial queries)
+- ⚡ **Type-safe Backend** using PostgreSQL + PostGIS + Prisma
+- 🔑 **Authentication & Authorization** with AWS Cognito
+- 🖼️ **Beautiful UI Components** with [shadcn/ui](https://ui.shadcn.com/)
+- ✅ **Form Validation** powered by React Hook Form + Zod
+- 🔄 **Global State Management** using Redux Toolkit & RTK Query
+- 🛠️ Developer-friendly tools: Postman, AWS CLI, Prisma Client
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-Im deploying it to vercel.
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🖥️ Frontend Stack
 
-To learn more about Next.js, take a look at the following resources:
+| Tech / Library | Purpose | Docs |
+|----------------|---------|------|
+| **Mapbox** | Interactive maps & geospatial rendering | [mapbox.com](https://www.mapbox.com/) |
+| **Mapbox React GL** | React bindings for Mapbox | [Docs](https://docs.mapbox.com/help/tutorials/) |
+| **shadcn/ui** | Beautiful headless UI components | [Docs](https://ui.shadcn.com/docs) |
+| **shadcn/sonner** | Toast notifications | [Docs](https://ui.shadcn.com/docs/components/sonner) |
+| **shadcn + React Hook Form** | UI + form integration | [Docs](https://ui.shadcn.com/docs/components/form) |
+| **React Hook Form** | Form state management | [Docs](https://react-hook-form.com/get-started) |
+| **Zod** | Schema validation & type inference | [Docs](https://zod.dev/?id=table-of-contents) |
+| **Redux Toolkit** | State management | [Docs](https://redux-toolkit.js.org/) |
+| **Redux Toolkit Query** | API caching & data fetching | [Docs](https://redux-toolkit.js.org/rtk-query/overview) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🗄️ Backend Stack
 
-## Deploy on Vercel
+| Tech / Service | Purpose | Docs / Download |
+|----------------|---------|------------------|
+| **PostgreSQL** | Relational database | [Download](https://www.postgresql.org/download/) |
+| **PostGIS** | Geospatial extensions for Postgres | [Install](https://postgis.net/workshops/postgis-intro/) |
+| **PgAdmin** | Database management GUI | [Download](https://www.pgadmin.org/download/) |
+| **Prisma** | Type-safe ORM | [Docs](https://www.prisma.io/docs/getting-started) |
+| **Postman** | API testing | [Download](https://www.postman.com/downloads/) |
+| **AWS** | Cloud hosting & infrastructure | [AWS](https://aws.amazon.com/) |
+| **AWS CLI** | Command-line AWS management | [Docs](https://docs.aws.amazon.com/cli/latest/userguide/) |
+| **AWS Billing Dashboard** | Monitor costs | [Dashboard](https://us-east-1.console.aws.amazon.com/) |
+| **AWS Cognito** | User authentication | [Docs](https://aws.amazon.com/cognito/) |
+| **AWS Cognito Related Links** | Extra resources | *(add your specific links here)* |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏗️ Getting Started
+
+### Prerequisites
+- **Node.js** (v18+)
+- **PostgreSQL + PostGIS** installed locally
+- **AWS Account** (for Cognito & hosting)
+- **Mapbox Account** (for API keys)
+
