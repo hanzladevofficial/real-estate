@@ -27,7 +27,7 @@ export default function Footer() {
                 <Link href={"/contact"}>Contact Us</Link>
               </li>
               <li>
-                <Link href={"/faqs"}>FAQ's</Link>
+                <Link href="/faqs">{`FAQ's`}</Link>
               </li>
               <li>
                 <Link href={"/about"}>Term</Link>
