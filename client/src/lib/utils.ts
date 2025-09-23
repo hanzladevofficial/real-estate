@@ -55,7 +55,7 @@ export const withToast = async <T>(
     throw err;
   }
 };
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createNewUserInDatabase = async (
   user: any,
   idToken: any,

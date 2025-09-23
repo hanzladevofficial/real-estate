@@ -1,5 +1,98 @@
 @import "tailwindcss";
 
+/* Custom CSS Variables */
+@theme {
+  --color-background: oklch(98% 0 0);
+  --color-foreground: oklch(9% 0.84 222.2);
+  --color-card: oklch(100% 0 0);
+  --color-card-foreground: oklch(9% 0.84 222.2);
+  --color-popover: oklch(100% 0 0);
+  --color-popover-foreground: oklch(9% 0.84 222.2);
+  --color-primary: oklch(53.3% 0.832 221.2);
+  --color-primary-foreground: oklch(98% 0.4 210);
+  --color-primary-50: #fcfcfc;
+  --color-primary-100: #f1f1f2;
+  --color-primary-200: #e0e0e2;
+  --color-primary-300: #c7c7cc;
+  --color-primary-400: #a8a8af;
+  --color-primary-500: #82828b;
+  --color-primary-600: #57575f;
+  --color-primary-700: #27272a;
+  --color-primary-800: #111113;
+  --color-primary-900: #040405;
+  --color-primary-950: #000000;
+  --color-secondary: oklch(96.1% 0.4 210);
+  --color-secondary-foreground: oklch(11.2% 0.474 222.2);
+  --color-secondary-50: #fefcfc;
+  --color-secondary-100: #fdf2f2;
+  --color-secondary-200: #fae1e1;
+  --color-secondary-300: #f6c9c9;
+  --color-secondary-400: #f1abab;
+  --color-secondary-500: #eb8686;
+  --color-secondary-600: #e45a5a;
+  --color-secondary-700: #dc2828;
+  --color-secondary-800: #7c1414;
+  --color-secondary-900: #400a0a;
+  --color-secondary-950: #2c0707;
+  --color-muted: oklch(96.1% 0.4 210);
+  --color-muted-foreground: oklch(46.9% 0.163 215.4);
+  --color-accent: oklch(96.1% 0.4 210);
+  --color-accent-foreground: oklch(11.2% 0.474 222.2);
+  --color-destructive: oklch(60.2% 0.842 0);
+  --color-destructive-foreground: oklch(98% 0.4 210);
+  --color-border: oklch(91.4% 0.318 214.3);
+  --color-input: oklch(88% 0.318 214.3);
+  --color-ring: oklch(53.3% 0.832 221.2);
+  --color-sidebar-background: oklch(98% 0 0);
+  --color-sidebar-foreground: oklch(26.1% 0.053 240);
+  --color-sidebar-primary: oklch(10% 0.059 240);
+  --color-sidebar-primary-foreground: oklch(98% 0 0);
+  --color-sidebar-accent: oklch(95.9% 0.048 240);
+  --color-sidebar-accent-foreground: oklch(10% 0.059 240);
+  --color-sidebar-border: oklch(91% 0.13 220);
+  --color-sidebar-ring: oklch(59.8% 0.912 217.2);
+  
+  --chart-1: 12 76% 61%;
+  --chart-2: 173 58% 39%;
+  --chart-3: 197 37% 24%;
+  --chart-4: 43 74% 66%;
+  --chart-5: 27 87% 67%;
+  
+  --radius: 0.5rem;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  @theme {
+    --color-background: oklch(3.9% 0.84 222.2);
+    --color-foreground: oklch(98% 0.4 210);
+    --color-card: oklch(4.9% 0.84 222.2);
+    --color-card-foreground: oklch(98% 0.4 210);
+    --color-popover: oklch(4.9% 0.84 222.2);
+    --color-popover-foreground: oklch(98% 0.4 210);
+    --color-primary: oklch(59.8% 0.912 217.2);
+    --color-primary-foreground: oklch(11.2% 0.474 222.2);
+    --color-secondary: oklch(17.5% 0.326 217.2);
+    --color-secondary-foreground: oklch(98% 0.4 210);
+    --color-muted: oklch(17.5% 0.326 217.2);
+    --color-muted-foreground: oklch(65.1% 0.202 215);
+    --color-accent: oklch(17.5% 0.326 217.2);
+    --color-accent-foreground: oklch(98% 0.4 210);
+    --color-destructive: oklch(30.6% 0.628 0);
+    --color-destructive-foreground: oklch(98% 0.4 210);
+    --color-border: oklch(17.5% 0.326 217.2);
+    --color-input: oklch(15.5% 0.326 217.2);
+    --color-ring: oklch(48% 0.763 224.3);
+    --color-sidebar-background: oklch(10% 0.059 240);
+    --color-sidebar-foreground: oklch(95.9% 0.048 240);
+    --color-sidebar-primary: oklch(48% 0.763 224.3);
+    --color-sidebar-primary-foreground: oklch(100% 0 0);
+    --color-sidebar-accent: oklch(15.9% 0.037 240);
+    --color-sidebar-accent-foreground: oklch(95.9% 0.048 240);
+    --color-sidebar-border: oklch(15.9% 0.037 240);
+    --color-sidebar-ring: oklch(59.8% 0.912 217.2);
+  }
+} */
+
 *,
 *::before,
 *::after {
@@ -14,79 +107,23 @@ body,
   width: 100%;
   @apply text-sm;
   @apply bg-white;
-  @apply dark:bg-black;
+  /* @apply dark:bg-black; */
 }
 
-@theme {
-  --color-background: oklch(98% 0 0);
-  --color-foreground: oklch(9% 0.084 222.2);
-  --color-card: oklch(100% 0 0);
-  --color-card-foreground: oklch(9% 0.084 222.2);
-  --color-popover: oklch(100% 0 0);
-  --color-popover-foreground: oklch(9% 0.084 222.2);
-  --color-primary: oklch(53.3% 0.232 221.2);
-  --color-primary-foreground: oklch(98% 0.040 210);
-  --color-secondary: oklch(96.1% 0.040 210);
-  --color-secondary-foreground: oklch(11.2% 0.474 222.2);
-  --color-muted: oklch(96.1% 0.040 210);
-  --color-muted-foreground: oklch(46.9% 0.163 215.4);
-  --color-accent: oklch(96.1% 0.040 210);
-  --color-accent-foreground: oklch(11.2% 0.474 222.2);
-  --color-destructive: oklch(60.2% 0.242 0);
-  --color-destructive-foreground: oklch(98% 0.040 210);
-  --color-border: oklch(91.4% 0.318 214.3);
-  --color-input: oklch(88% 0.318 214.3);
-  --color-ring: oklch(53.3% 0.232 221.2);
-  --radius: 0.5rem;
-  --color-sidebar-background: oklch(98% 0 0);
-  --color-sidebar-foreground: oklch(26.1% 0.053 240);
-  --color-sidebar-primary: oklch(10% 0.059 240);
-  --color-sidebar-primary-foreground: oklch(98% 0 0);
-  --color-sidebar-accent: oklch(95.9% 0.048 240);
-  --color-sidebar-accent-foreground: oklch(10% 0.059 240);
-  --color-sidebar-border: oklch(91% 0.13 220);
-  --color-sidebar-ring: oklch(59.8% 0.212 217.2);
+/* body {
+  @apply bg-background text-foreground;
 }
 
-@theme dark {
-  --color-background: oklch(3.9% 0.084 222.2);
-  --color-foreground: oklch(98% 0.040 210);
-  --color-card: oklch(4.9% 0.084 222.2);
-  --color-card-foreground: oklch(98% 0.040 210);
-  --color-popover: oklch(4.9% 0.084 222.2);
-  --color-popover-foreground: oklch(98% 0.040 210);
-  --color-primary: oklch(59.8% 0.212 217.2);
-  --color-primary-foreground: oklch(11.2% 0.474 222.2);
-  --color-secondary: oklch(17.5% 0.326 217.2);
-  --color-secondary-foreground: oklch(98% 0.040 210);
-  --color-muted: oklch(17.5% 0.326 217.2);
-  --color-muted-foreground: oklch(65.1% 0.202 215);
-  --color-accent: oklch(17.5% 0.326 217.2);
-  --color-accent-foreground: oklch(98% 0.040 210);
-  --color-destructive: oklch(30.6% 0.628 0);
-  --color-destructive-foreground: oklch(98% 0.040 210);
-  --color-border: oklch(17.5% 0.326 217.2);
-  --color-input: oklch(15.5% 0.326 217.2);
-  --color-ring: oklch(48% 0.763 224.3);
-  --color-sidebar-background: oklch(10% 0.059 240);
-  --color-sidebar-foreground: oklch(95.9% 0.048 240);
-  --color-sidebar-primary: oklch(48% 0.763 224.3);
-  --color-sidebar-primary-foreground: oklch(100% 0 0);
-  --color-sidebar-accent: oklch(15.9% 0.037 240);
-  --color-sidebar-accent-foreground: oklch(95.9% 0.048 240);
-  --color-sidebar-border: oklch(15.9% 0.037 240);
-  --color-sidebar-ring: oklch(59.8% 0.212 217.2);
-}
+* {
+  @apply border-border;
+} */
 
 .dashboard-container {
   @apply pt-8 pb-5 px-8;
 }
 
 .mapboxgl-popup-content {
-  @apply !bg-primary-700;
-  @apply !rounded-lg;
-  @apply !py-2;
-  @apply !px-3;
+  @apply !bg-primary-700 !rounded-lg !py-2 !px-3;
 }
 
 .mapboxgl-popup-anchor-top .mapboxgl-popup-tip {
@@ -106,14 +143,7 @@ body,
 }
 
 .marker-popup {
-  @apply bg-primary-700;
-  @apply text-white;
-  @apply p-0;
-  @apply m-0;
-  @apply !flex;
-  @apply justify-between;
-  @apply items-center;
-  @apply gap-3;
+  @apply bg-primary-700 text-white p-0 m-0 !flex justify-between items-center gap-3;
 }
 
 .marker-popup-image {
@@ -125,8 +155,7 @@ body,
 }
 
 .marker-popup-title {
-  @apply hover:underline hover:text-blue-300 cursor-pointer;
-  @apply focus:outline-none;
+  @apply hover:underline hover:text-blue-300 cursor-pointer focus:outline-none;
 }
 
 .marker-popup-price-unit {
@@ -154,7 +183,11 @@ body,
 /* Amplify UI Overrides */
 [data-amplify-authenticator] {
   --amplify-components-button-primary-background-color: var(--color-primary);
-  --amplify-components-button-primary-hover-background-color: oklch(from var(--color-primary) l c h / 0.9);
+  --amplify-components-button-primary-hover-background-color: color-mix(
+    in oklch,
+    var(--color-primary) 90%,
+    transparent
+  );
   --amplify-components-button-border-radius: var(--radius);
   --amplify-components-fieldcontrol-border-radius: var(--radius);
 }
@@ -191,12 +224,11 @@ body,
   margin-top: 1rem;
   background-color: var(--color-primary) !important;
   color: var(--color-primary-foreground) !important;
-  @apply font-medium;
-  @apply text-sm;
+  @apply font-medium text-sm;
 }
 
 [data-amplify-authenticator] .amplify-button--primary:hover {
-  background-color: oklch(from var(--color-primary) l c h / 0.8) !important;
+  background-color: color-mix(in oklch, var(--color-primary) 80%, transparent) !important;
 }
 
 [data-amplify-authenticator] .amplify-field-group__control {
