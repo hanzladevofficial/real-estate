@@ -1,6 +1,6 @@
 "use client";
 import Footer from "@/components/landing/footer";
-import Navbar from "@/components/landing/navbar";
+import Navbar from "@/components/common/navbar";
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import { fetchAuthSession } from "aws-amplify/auth";
 import { useEffect } from "react";

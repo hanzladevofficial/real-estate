@@ -36,15 +36,15 @@ export default function Navbar() {
     >
       <div className="flex justify-between items-center w-full py-3 px-8 bg-primary-700 text-white">
         <div className="flex items-center gap-4 md:gap-6">
-          {/* {isDashboardPage && (
+          {isDashboardPage && (
             <div className="md:hidden">
               <SidebarTrigger />
             </div>
-          )} */}
+          )}
           <Link href={"/"} scroll={false} className="cursor-pointer">
             <div className="flex items-center gap-3">
               <Image
-                src="./logo.svg"
+                src="/logo.svg"
                 alt="Rentiful app"
                 width={24}
                 height={24}
