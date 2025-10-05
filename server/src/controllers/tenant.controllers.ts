@@ -50,5 +50,29 @@ const getTenant = async (req: Request, res: Response): Promise<void> => {
     }
   }
 };
-
-export { createTenant, getTenant };
+const updateTenant = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { cognitoId } = req.params;
+    const { name, email, phoneNumber } = req.body;
+    const updatedTenant = await prisma.tenant.update({
+      where: {
+        cognitoId,
+      },
+      data: {
+        name,
+        email,
+        phoneNumber,
+      },
+    });
+    res.status(201).json(updatedTenant);
+  } catch (error) {
+    if (error instanceof Error) {
+      res
+        .status(500)
+        .json({ message: `Error updating tenant: ${error.message}` });
+    } else {
+      res.status(500).json({ message: "Unknown error occurred" });
+    }
+  }
+};
+export { createTenant, getTenant, updateTenant };

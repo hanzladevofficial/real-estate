@@ -265,3 +265,12 @@ body,
 [data-close-button="true"] {
   @apply bg-background border-border text-foreground hover:bg-muted;
 }
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0 #6b7280;
+  border-color: #6b7280;
+}
+input{
+  background: white;
+}
