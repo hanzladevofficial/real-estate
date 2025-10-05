@@ -207,7 +207,7 @@ body,
 [data-amplify-authenticator] [data-amplify-container] {
   border-radius: var(--radius);
   padding: 2rem !important;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(0, 0, 0, 0.377);
 }
 
 [data-amplify-authenticator] [data-amplify-form] {
@@ -223,8 +223,9 @@ body,
   height: 2.75rem;
   margin-top: 1rem;
   background-color: var(--color-primary) !important;
-  color: var(--color-primary-foreground) !important;
-  @apply font-medium text-sm;
+  border:none;
+  color: white !important;
+  @apply font-medium text-xl;
 }
 
 [data-amplify-authenticator] .amplify-button--primary:hover {
@@ -232,7 +233,7 @@ body,
 }
 
 [data-amplify-authenticator] .amplify-field-group__control {
-  border-color: var(--color-input);
+  border-color: rgba(0, 0, 0, 0.483);
 }
 
 [data-amplify-authenticator] .amplify-field-group__control:focus-within {
@@ -246,7 +247,7 @@ body,
 
 [data-amplify-authenticator] .amplify-label {
   @apply text-sm font-medium;
-  color: var(--color-foreground);
+  color: rgba(0, 0, 0, 0.802);
 }
 
 [data-amplify-authenticator] .amplify-select {
