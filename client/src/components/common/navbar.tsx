@@ -141,7 +141,7 @@ export default function Navbar() {
                       router.push(
                         authUser?.userRole?.toLowerCase() === "manager"
                           ? "/manager/properties"
-                          : "/tenants/favorites",
+                          : "/tenant/favorites",
                         {
                           scroll: false,
                         }
@@ -156,8 +156,8 @@ export default function Navbar() {
                     onClick={() =>
                       router.push(
                         authUser?.userRole?.toLowerCase() === "manager"
-                          ? `/managers/settings`
-                          : "/tenants/settings",
+                          ? `/manager/settings`
+                          : "/tenant/settings",
                         {
                           scroll: false,
                         }

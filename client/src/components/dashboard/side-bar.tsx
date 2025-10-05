@@ -114,10 +114,10 @@ export default function DashboardSidebar({ userType }: AppSidebarProps) {
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
-          {navLinks.map((link) => {
+          {navLinks.map((link, index) => {
             const isActive = pathname === link.href;
             return (
-              <SidebarMenuItem>
+              <SidebarMenuItem key={index}>
                 <SidebarMenuButton
                   asChild
                   className={cn(

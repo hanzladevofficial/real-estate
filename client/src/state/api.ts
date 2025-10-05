@@ -19,20 +19,19 @@ export const api = createApi({
     },
   }),
   reducerPath: "api",
-  tagTypes: [],
+  tagTypes: ["Tenants", "Managers"],
   endpoints: (build) => ({
     getAuthUser: build.query<User, void>({
       queryFn: async (_, _queryApi, _extraOptions, fetchWithBQ) => {
         try {
           const session = await fetchAuthSession();
           const idToken = session.tokens?.idToken;
-          const jwt = idToken?.toString();
           const user = await getCurrentUser();
 
           const userRole = idToken?.payload["custom:role"] as string;
           const endpoint =
             userRole === "manager"
-              ? `/manager/${user.userId}`
+              ? `/managers/${user.userId}`
               : `/tenants/${user.userId}`;
 
           let userDetailsResponse = await fetchWithBQ(endpoint);
@@ -44,7 +43,7 @@ export const api = createApi({
           ) {
             userDetailsResponse = await createNewUserInDatabase(
               user,
-              jwt,
+              idToken,
               userRole,
               fetchWithBQ
             );
@@ -62,7 +61,33 @@ export const api = createApi({
         }
       },
     }),
+    updateTenantSettings: build.mutation<
+      Tenant,
+      { cognitoId: string } & Partial<Tenant>
+    >({
+      query: ({ cognitoId, ...updatedTenant }) => ({
+        url: `tenants/${cognitoId}`,
+        method: "PUT",
+        body: updatedTenant,
+      }),
+      invalidatesTags: (results) => [{ type: "Tenants", id: results?.id }],
+    }),
+    updateManagerSettings: build.mutation<
+      Manager,
+      { cognitoId: string } & Partial<Manager>
+    >({
+      query: ({ cognitoId, ...updatedManager }) => ({
+        url: `managers/${cognitoId}`,
+        method: "PUT",
+        body: updatedManager,
+      }),
+      invalidatesTags: (results) => [{ type: "Managers", id: results?.id }],
+    }),
   }),
 });
 
-export const { useGetAuthUserQuery } = api;
+export const {
+  useGetAuthUserQuery,
+  useUpdateTenantSettingsMutation,
+  useUpdateManagerSettingsMutation,
+} = api;
