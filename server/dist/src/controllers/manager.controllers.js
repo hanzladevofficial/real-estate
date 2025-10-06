@@ -9,8 +9,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateManager = exports.getManager = exports.createManager = void 0;
+exports.getManagerProperties = exports.updateManager = exports.getManager = exports.createManager = void 0;
 const client_1 = require("@prisma/client");
+const wkt_1 = require("@terraformer/wkt");
 const prisma = new client_1.PrismaClient();
 const createManager = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -92,3 +93,46 @@ const updateManager = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.updateManager = updateManager;
+const getManagerProperties = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { cognitoId } = req.params;
+        const manager = yield prisma.manager.findUnique({
+            where: { id: Number(cognitoId) },
+        });
+        if (!manager)
+            res.status(404).json({ message: "Manager don't Exists." });
+        const properties = yield prisma.property.findMany({
+            where: { managerCognitoId: cognitoId },
+            include: {
+                location: true,
+            },
+        });
+        const propertiesWithFormattedLocation = yield Promise.all(properties.map((property) => __awaiter(void 0, void 0, void 0, function* () {
+            var _a;
+            const coordinates = yield prisma.$queryRaw `SELECT ST_asText(coordinates) as coordinates from "Location" where id = ${property.location.id}`;
+            const geoJSON = (0, wkt_1.wktToGeoJSON)(((_a = coordinates[0]) === null || _a === void 0 ? void 0 : _a.coordinates) || "");
+            const longitude = geoJSON.coordinates[0];
+            const latitude = geoJSON.coordinates[1];
+            return Object.assign(Object.assign({}, property), { location: Object.assign(Object.assign({}, property.location), { coordinates: {
+                        longitude,
+                        latitude,
+                    } }) });
+        })));
+        if (propertiesWithFormattedLocation) {
+            res.json(propertiesWithFormattedLocation);
+        }
+    }
+    catch (error) {
+        if (error instanceof Error) {
+            res
+                .status(500)
+                .json({
+                message: `Error retrieving manager properties: ${error.message}`,
+            });
+        }
+        else {
+            res.status(500).json({ message: "Unknown error occurred" });
+        }
+    }
+});
+exports.getManagerProperties = getManagerProperties;

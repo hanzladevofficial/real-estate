@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import { wktToGeoJSON } from "@terraformer/wkt";
 
 const prisma = new PrismaClient();
 const createManager = async (req: Request, res: Response): Promise<void> => {
@@ -72,4 +73,56 @@ const updateManager = async (req: Request, res: Response): Promise<void> => {
     }
   }
 };
-export { createManager, getManager, updateManager };
+const getManagerProperties = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const { cognitoId } = req.params;
+    const manager = await prisma.manager.findUnique({
+      where: { id: Number(cognitoId) },
+    });
+    if (!manager) res.status(404).json({ message: "Manager don't Exists." });
+    const properties = await prisma.property.findMany({
+      where: { managerCognitoId: cognitoId },
+      include: {
+        location: true,
+      },
+    });
+    const propertiesWithFormattedLocation = await Promise.all(
+      properties.map(async (property) => {
+        const coordinates: { coordinates: string }[] =
+          await prisma.$queryRaw`SELECT ST_asText(coordinates) as coordinates from "Location" where id = ${property.location.id}`;
+
+        const geoJSON: any = wktToGeoJSON(coordinates[0]?.coordinates || "");
+        const longitude = geoJSON.coordinates[0];
+        const latitude = geoJSON.coordinates[1];
+
+        return {
+          ...property,
+          location: {
+            ...property.location,
+            coordinates: {
+              longitude,
+              latitude,
+            },
+          },
+        };
+      })
+    );
+    if (propertiesWithFormattedLocation) {
+      res.json(propertiesWithFormattedLocation);
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      res
+        .status(500)
+        .json({
+          message: `Error retrieving manager properties: ${error.message}`,
+        });
+    } else {
+      res.status(500).json({ message: "Unknown error occurred" });
+    }
+  }
+};
+export { createManager, getManager, updateManager, getManagerProperties };
